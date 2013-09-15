@@ -44,13 +44,16 @@
 
 			perspective: 800px;
 			perspective-origin: 50% 100px;
+          -ms-transform: rotateY(18deg) rotateZ(18deg) rotateX(56deg);
+
+          transform: rotateY(18deg) rotateZ(18deg) rotateX(56deg);
 		}
 
 		.cube {
 			position: relative;
 			width: 200px;
 			margin: 0 auto;
-			
+			/*
 			-webkit-transform-style: preserve-3d;
 			-webkit-animation: spin 5s infinite linear;
 			
@@ -62,6 +65,8 @@
 
 			transform-style: preserve-3d;
 			animation: spin 5s infinite linear;
+          */
+
 		}
 
 		.cube div {
