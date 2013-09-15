@@ -11,7 +11,8 @@
 			{
 				attributenames: ['transform'],
 				depth : 1,
-				prefixes : ['ms-']
+				prefixes : ['-ms-'],
+                childSelectors : ['*']
 			};
 
 			var options = $.extend(defaults, options);
@@ -19,15 +20,15 @@
 			options.prefixcount = options.prefixes.length;
 	
     		traverseAndTransform = function(parent, parentTransform, currentDepth) {
-    			var parentTransform = parentTransform || {};
     			var currentDepth = currentDepth || 1;
     			var preserve3d = (parent.css('transform-style') === 'preserve-3d');
 
     			if (currentDepth <= options.depth || options.depth === 0) {
-    				parent.each(function() {
+    				parent.children(options.childSelectors.join()).each(function() {
     					var child = $(this);
     					var childTransform = mergeValues(parentTransform, getTransform(child));
     					child.css(childTransform);
+                      console.log(childTransform);
     					traverseAndTransform(child, childTransform, currentDepth + 1);
 					});
     			}
@@ -45,17 +46,18 @@
     		//{'ms-transform' : 'RotateY(90)'}
 
     		getTransform = function(obj) {
-    			var o = options;
     			var transformCss = {};
-    			for(var i= 0, pre = o.prefixes[i]; i < o.prefixcount; i++) {
-    				for(var j=0, name = o.attributenames[j]; j < o.attributecount; j++) {
+    			for(var i= 0; i < options.prefixcount; i++) {
+                  var pre = options.prefixes[i];
+    				for(var j=0; j < options.attributecount; j++) {
+                      var name = options.attributenames[j];
     					transformCss[pre + name] = obj.css(pre + name);
     				}
     			}
     			return transformCss;
     		}
 
-    		traverseAndTransform(this);
+    		traverseAndTransform(this, getTransform(this));
     	}
 	});
 })(jQuery);
