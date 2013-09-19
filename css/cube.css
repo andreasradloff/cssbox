@@ -53,17 +53,27 @@
 			margin: 0 auto;
           -ms-transform: rotateY(18deg) rotateZ(18deg) rotateX(56deg);
 
-          transform: rotateY(18deg) rotateZ(18deg) rotateX(56deg);
-          -webkit-transform-style: preserve-3d;
+          transform: rotateY(45deg) rotateZ(0) rotateX(45deg);
 
 
-          -moz-transform-style: preserve-3d;
+
+ -moz-transform-style: flat;
 
 
-          -ms-transform-style: preserve-3d;
+ -ms-transform-style: preserve-3d;
 
 
-          transform-style: preserve-3d;
+ transform-style: flat;
+          /* -webkit-transform-style: preserve-3d;
+
+
+           -moz-transform-style: preserve-3d;
+
+
+           -ms-transform-style: preserve-3d;
+
+
+           transform-style: preserve-3d;*/
 
 			/*
 			-webkit-animation: spin 5s infinite linear;
